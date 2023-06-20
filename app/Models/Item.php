@@ -13,6 +13,14 @@ class Item extends Model
         'name',
         'description',
         'price',
-        'qty'
+        'qty',
+        'itemphoto'
     ];
+
+    protected $appends = ['itemphoto_url'];
+
+    public function getItemPhotoUrlAttribute() {
+        $url = $this->itemphoto ? asset("images/item_images/" . $this->itemphoto) : "https://512pixels.net/downloads/macos-wallpapers-thumbs/10-14-Night-Thumb.jpg";
+        return $url;
+    }
 }

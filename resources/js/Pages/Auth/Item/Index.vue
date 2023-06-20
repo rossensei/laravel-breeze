@@ -1,12 +1,14 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head } from '@inertiajs/vue3';
+import { Head, Link } from '@inertiajs/vue3';
 import ItemCard from '@/Components/ItemCard.vue';
 import { onMounted } from 'vue';
 
 const props = defineProps({
     items: Array
 })
+
+
 </script>
 
 <template>
@@ -14,12 +16,15 @@ const props = defineProps({
 
     <AuthenticatedLayout>
         <template #header>
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">Items</h2>
+            <div class="flex justify-between items-center">
+                <h2 class="font-semibold text-xl text-gray-800 leading-tight">Items</h2>
+                <Link href="/items/create" class="px-4 py-1.5 rounded-md bg-gray-300 hover:bg-gray-200 text-black">Add Item</Link>
+            </div>
         </template>
 
         <div class="py-12">
-            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-2">
-                <ItemCard :items="props.items" />
+            <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 grid grid-cols-4 gap-4">
+                <ItemCard v-for="item in items" :key="item.id" :item="item" />
             </div>
         </div>
 
