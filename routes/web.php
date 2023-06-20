@@ -36,6 +36,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/items', [ItemController::class, 'index'])->name('items');
+    Route::get('/items/search/{searchKey}', [ItemController::class, 'search']);
     Route::get('/items/create', [ItemController::class, 'create'])->name('item.create');
     Route::post('/items', [ItemController::class, 'store']);
     Route::get('/items/{item}', [ItemController::class, 'show']);

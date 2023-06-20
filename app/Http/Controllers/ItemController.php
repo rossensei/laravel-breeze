@@ -44,4 +44,8 @@ class ItemController extends Controller
     public function show(Item $item) {
         return inertia('Auth/Item/View', ['item' => $item]);
     }
+
+    public function search($searchKey) {
+        return inertia('Auth/Item/Index', ['items' => Item::where('name', 'like', "%$searchKey%")->orWhere('description', 'like', "%$searchKey%")->get()]);
+    }
 }

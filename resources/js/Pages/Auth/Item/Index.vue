@@ -1,6 +1,6 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import { Head, Link } from '@inertiajs/vue3';
+import { Head, Link, router } from '@inertiajs/vue3';
 import ItemCard from '@/Components/ItemCard.vue';
 import { onMounted } from 'vue';
 
@@ -8,6 +8,9 @@ const props = defineProps({
     items: Array
 })
 
+const search = (ev) => {
+    router.visit('/items/search/' + ev.target.value)
+}
 
 </script>
 
@@ -18,6 +21,9 @@ const props = defineProps({
         <template #header>
             <div class="flex justify-between items-center">
                 <h2 class="font-semibold text-xl text-gray-800 leading-tight">Items</h2>
+
+                <input type="text" name="search" id="search" class="rounded-full px-4 py-1" placeholder="Search..." @keydown.enter="search($event)">
+
                 <Link href="/items/create" class="px-4 py-1.5 rounded-md bg-gray-300 hover:bg-gray-200 text-black">Add Item</Link>
             </div>
         </template>
