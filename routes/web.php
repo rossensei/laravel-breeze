@@ -40,6 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/items/create', [ItemController::class, 'create'])->name('item.create');
     Route::post('/items', [ItemController::class, 'store']);
     Route::get('/items/{item}', [ItemController::class, 'show']);
+    Route::post('/items/toggle/{item}', [ItemController::class, 'toggle']);
 });
 
 require __DIR__.'/auth.php';

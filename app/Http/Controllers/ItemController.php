@@ -48,4 +48,10 @@ class ItemController extends Controller
     public function search($searchKey) {
         return inertia('Auth/Item/Index', ['items' => Item::where('name', 'like', "%$searchKey%")->orWhere('description', 'like', "%$searchKey%")->get()]);
     }
+
+    public function toggle(Item $item) {
+        $item->enabled = !$item->enabled;
+        $item->save();
+        return back();
+    }
 }
