@@ -54,4 +54,9 @@ class ItemController extends Controller
         $item->save();
         return back();
     }
+
+    public function destroy(Item $item) {
+        $item->delete();
+        return redirect('/items');
+    }
 }

@@ -41,6 +41,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/items', [ItemController::class, 'store']);
     Route::get('/items/{item}', [ItemController::class, 'show']);
     Route::post('/items/toggle/{item}', [ItemController::class, 'toggle']);
+    Route::delete('/items/{item}', [ItemController::class, 'destroy'])->middleware('role:admin');
 });
 
 require __DIR__.'/auth.php';
