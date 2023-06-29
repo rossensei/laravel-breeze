@@ -1,11 +1,12 @@
 <script setup>
 import { onMounted, ref } from 'vue';
+import { Link, usePage } from '@inertiajs/vue3';
 import ApplicationLogo from '@/Components/ApplicationLogo.vue';
 import Dropdown from '@/Components/Dropdown.vue';
 import DropdownLink from '@/Components/DropdownLink.vue';
 import NavLink from '@/Components/NavLink.vue';
 import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
-import { Link, usePage } from '@inertiajs/vue3';
+import MessageDialog from '@/Components/MessageDialog.vue'
 
 const showingNavigationDropdown = ref(false);
 
@@ -33,17 +34,10 @@ const links = ref([
 ])
 
 
-// onMounted(() => {
-//     // const page = usePage()
-//     console.log(page.props.z)
+// const closeDialog = () => {
+// }
 
-//     // console.log(route('dashboard'))
-//     if(route('dashboard') == ('http://127.0.0.1:8000' + page.url)){
-//         console.log('true')
-//     } else {
-//         console.log('false')
-//     }
-// })
+
 </script>
 
 <template>
@@ -182,6 +176,7 @@ const links = ref([
             </header>
 
             <!-- Page Content -->
+            <MessageDialog :messages="$page.props.messages" />
             <main>
                 <slot />
             </main>

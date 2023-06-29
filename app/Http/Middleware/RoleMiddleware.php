@@ -18,7 +18,7 @@ class RoleMiddleware
         // dd(strcmp($role, $request->user()->role));
         
         if(strcmp($request->user()->role, $role) != 0) {
-            return back();
+            return back()->with('error', 'Only an administrator can perform this action!');
         }
 
         return $next($request);
